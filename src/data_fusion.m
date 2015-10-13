@@ -36,7 +36,7 @@ function [ Zimhat ] = data_fusion( Yhim, Ymim, downsamp_factor, R, B, p, basis_t
 % 
 % % % % % % % % % % % % % 
 % 
-% Copyright (C) 2015 Miguel Simoes, Jose Bioucas-Dias, Luis B. Almeida 
+% Copyright (C) 2014 Miguel Simoes, Jose Bioucas-Dias, Luis B. Almeida 
 % and Jocelyn Chanussot
 % 
 % This program is free software: you can redistribute it and/or modify
@@ -112,7 +112,7 @@ IBD_DV = FDVC ./(abs(FB.^2) + abs(FDH).^2+ abs(FDV).^2 + 1);
 % subsampling mask that has the same effect has matrix M in [1].
 shift = 1;
 mask = zeros(nl, nc);
-mask(ceil(downsamp_factor/2)+shift-1:downsamp_factor:nl+shift-1, ceil(downsamp_factor/2)+shift-1:downsamp_factor:nc+shift-1) = 1;
+mask(shift+1:downsamp_factor:nl, shift+1:downsamp_factor:nc) = 1;
 % Subsampling mask in image format
 maskim = repmat(mask, [1, 1, p]);
 % Subsampling mask in matrix format

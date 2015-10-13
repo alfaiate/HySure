@@ -52,7 +52,7 @@ function [ V, R, B ] = sen_resp_est( Yhim, Ymim, downsamp_factor, intersection, 
 % 
 % % % % % % % % % % % % % 
 % 
-% Copyright (C) 2015 Miguel Simoes, Jose Bioucas-Dias, Luis B. Almeida 
+% Copyright (C) 2014 Miguel Simoes, Jose Bioucas-Dias, Luis B. Almeida 
 % and Jocelyn Chanussot
 % 
 % This program is free software: you can redistribute it and/or modify
@@ -189,7 +189,7 @@ end
 % convenience and the end result is the same. We also explicity form a
 % subsampling mask that has the same effect has matrix M in [1].
 mask = zeros(nl, nc);
-mask(ceil(downsamp_factor/2)+shift-1:downsamp_factor:nl+shift-1, ceil(downsamp_factor/2)+shift-1:downsamp_factor:nc+shift-1) = 1;
+mask(shift+1:downsamp_factor:nl, shift+1:downsamp_factor:nc) = 1;
 % Subsampling mask in image format
 maskim = repmat(mask, [1, 1, p]);
 % Yhim with the same size as Ym (but with zeros)
